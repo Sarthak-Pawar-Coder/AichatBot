@@ -36,8 +36,8 @@ function CodeBlock({ children, className, ...props }) {
   };
 
   return (
-    <div className="relative group my-3">
-      <div className="flex items-center justify-between px-4 py-2 rounded-t-lg"
+    <div className="relative group my-3 overflow-hidden rounded-lg">
+      <div className="flex items-center justify-between px-3 sm:px-4 py-2 rounded-t-lg"
            style={{ background: 'rgba(0,0,0,0.6)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <span className="text-xs font-mono" style={{ color: 'rgba(255,255,255,0.4)' }}>
           {language || 'code'}
@@ -54,15 +54,17 @@ function CodeBlock({ children, className, ...props }) {
           {copied ? '✓ Copied' : 'Copy'}
         </button>
       </div>
-      <SyntaxHighlighter
-        style={customCodeTheme}
-        language={language || 'text'}
-        PreTag="div"
-        customStyle={{ borderTopLeftRadius: 0, borderTopRightRadius: 0, marginTop: 0 }}
-        {...props}
-      >
-        {code}
-      </SyntaxHighlighter>
+      <div className="overflow-x-auto max-w-full">
+        <SyntaxHighlighter
+          style={customCodeTheme}
+          language={language || 'text'}
+          PreTag="div"
+          customStyle={{ borderTopLeftRadius: 0, borderTopRightRadius: 0, marginTop: 0 }}
+          {...props}
+        >
+          {code}
+        </SyntaxHighlighter>
+      </div>
     </div>
   );
 }
@@ -71,9 +73,9 @@ export default function MessageBubble({ message, isStreaming }) {
   const isUser = message.role === 'user';
 
   return (
-    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
+    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-3 sm:mb-4`}>
       <div
-        className={`max-w-[80%] md:max-w-[70%] rounded-2xl px-5 py-3.5 ${
+        className={`max-w-[92%] sm:max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 ${
           isUser
             ? 'rounded-br-md'
             : 'rounded-bl-md'
@@ -104,7 +106,7 @@ export default function MessageBubble({ message, isStreaming }) {
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
-                  code({ node, inline, className, children, ...props }) {
+                  code({ node: _node, inline, className, children, ...props }) {
                     if (inline) {
                       return (
                         <code className={className} {...props}>

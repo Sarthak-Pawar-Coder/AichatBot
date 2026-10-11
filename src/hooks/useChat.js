@@ -41,7 +41,16 @@ export function useChat() {
       });
 
       if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
+        let errorMsg = `Server error: ${response.status}`;
+        try {
+          const errJson = await response.json();
+          if (errJson?.error) {
+            errorMsg = errJson.error;
+          }
+        } catch {
+          // not json
+        }
+        throw new Error(errorMsg);
       }
 
       if (!response.body) {

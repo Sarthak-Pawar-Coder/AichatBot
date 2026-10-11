@@ -25,7 +25,9 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative w-screen h-screen min-h-[100dvh] overflow-hidden bg-black text-white select-none">
+    <div className={`relative w-full min-h-[100dvh] bg-black text-white ${
+      currentView === 'landing' ? 'min-h-[100dvh] overflow-y-auto overflow-x-hidden' : 'h-[100dvh] overflow-hidden'
+    }`}>
       {/* Living Cinematic Moving Background */}
       <AnimatedBackground />
 

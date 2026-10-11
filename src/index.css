@@ -36,13 +36,14 @@
 
 html, body, #root {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  min-height: 100dvh;
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Scrollbar styling */
@@ -257,3 +258,34 @@ html, body, #root {
   vertical-align: text-bottom;
   animation: blink-cursor 1s step-end infinite;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Mobile safe area padding utility */
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* Academic Mentorship badge glow */
+.mentorship-card {
+  background: linear-gradient(135deg, rgba(24, 20, 16, 0.85) 0%, rgba(15, 23, 42, 0.82) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 0 16px -2px rgba(251, 191, 36, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.25s ease-in-out;
+}
+.mentorship-card:hover {
+  border-color: rgba(251, 191, 36, 0.55);
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.7), 0 0 24px 0 rgba(251, 191, 36, 0.28);
+  transform: translateY(-1px);
+}
+

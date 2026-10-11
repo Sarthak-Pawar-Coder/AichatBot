@@ -105,7 +105,7 @@ export default function AnimatedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 w-screen h-screen min-h-[100dvh] overflow-hidden pointer-events-none select-none bg-black">
+    <div className="fixed inset-0 w-full h-full min-h-[100dvh] overflow-hidden pointer-events-none select-none bg-black">
       {/* Pristine Full-Screen Mountain-and-Lake Landscape with Smooth Continuous Cinematic Camera Motion */}
       <img
         src="/background.jpg"
