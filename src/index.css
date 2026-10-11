@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-bg-primary: #0a0e1a;
+  --color-bg-card: rgba(30, 26, 24, 0.7);
+  --color-bg-card-hover: rgba(30, 26, 24, 0.85);
+  --color-border-subtle: rgba(255, 255, 255, 0.12);
+  --color-border-active: rgba(255, 255, 255, 0.25);
+
+  --color-neon-blue: #38bdf8;
+  --color-neon-blue-glow: rgba(56, 189, 248, 0.5);
+  --color-neon-white: #ffffff;
+  --color-ember-orange: #f59e0b;
+  --color-ember-gold: #fbbf24;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-tertiary: rgba(255, 255, 255, 0.45);
+
+  --color-user-bubble: rgba(56, 189, 248, 0.15);
+  --color-user-border: rgba(56, 189, 248, 0.3);
+  --color-ai-bubble: rgba(255, 255, 255, 0.05);
+  --color-ai-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Double-tube white neon sign effect matching image */
+.neon-tube-sign {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #ffffff;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.95);
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 10px #ffffff,
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.6),
+    0 0 80px rgba(255, 240, 220, 0.4),
+    0 0 120px rgba(255, 220, 180, 0.2);
+}
+
+/* Timber mounting frame structure */
+.timber-mount-frame {
+  position: relative;
+  display: inline-block;
+  padding: 1.2rem 3.5rem;
+  border-top: 3px solid rgba(139, 90, 43, 0.7);
+  border-bottom: 3px solid rgba(139, 90, 43, 0.7);
+  background: rgba(15, 12, 10, 0.2);
+  backdrop-filter: blur(2px);
+}
+.timber-mount-frame::before,
+.timber-mount-frame::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  width: 6px;
+  background: linear-gradient(to bottom, #5c3a1e, #8b5a2b, #3d2310);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+.timber-mount-frame::before {
+  left: 0;
+}
+.timber-mount-frame::after {
+  right: 0;
+}
+
+/* Frosted glass card */
+.glass-prompter {
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  background: rgba(30, 26, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-card {
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(20, 18, 16, 0.7);
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* Chat Now button glow matching image */
+.btn-pill-blue {
+  background: #38bdf8;
+  color: #ffffff;
+  box-shadow:
+    0 0 15px rgba(56, 189, 248, 0.4),
+    0 0 30px rgba(56, 189, 248, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+.btn-pill-blue:hover {
+  background: #0ea5e9;
+  box-shadow:
+    0 0 25px rgba(56, 189, 248, 0.6),
+    0 0 50px rgba(56, 189, 248, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Continuous Cinematic Landscape Camera Motion */
+@keyframes cinematic-landscape {
+  0% {
+    transform: scale(1.06) translate(0%, 0%);
+  }
+  25% {
+    transform: scale(1.12) translate(-1.2%, -0.6%);
+  }
+  50% {
+    transform: scale(1.08) translate(-2.0%, 0.4%);
+  }
+  75% {
+    transform: scale(1.13) translate(-0.8%, 1.0%);
+  }
+  100% {
+    transform: scale(1.06) translate(0%, 0%);
+  }
+}
+
+.animate-cinematic-landscape {
+  transform-origin: center center;
+  animation: cinematic-landscape 48s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-cinematic-landscape {
+    animation: none !important;
+    transform: scale(1.0) translate(0, 0) !important;
+  }
+}
+
+/* Subtle water ripple ring animation */
+@keyframes ripple-wave {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.ripple-circle {
+  animation: ripple-wave 4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+/* Markdown styling in chat */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.markdown-content h1 { font-size: 1.5rem; }
+.markdown-content h2 { font-size: 1.25rem; }
+.markdown-content h3 { font-size: 1.1rem; }
+
+.markdown-content p {
+  margin-bottom: 0.75em;
+  line-height: 1.7;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 0.75em;
+  padding-left: 1.5em;
+}
+.markdown-content li {
+  margin-bottom: 0.3em;
+  line-height: 1.6;
+}
+
+.markdown-content code:not(pre code) {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+.markdown-content pre {
+  margin-bottom: 1em;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid rgba(56, 189, 248, 0.6);
+  padding-left: 1em;
+  margin-bottom: 0.75em;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.markdown-content a {
+  color: var(--color-neon-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Typing cursor animation */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--color-neon-blue);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink-cursor 1s step-end infinite;
+}

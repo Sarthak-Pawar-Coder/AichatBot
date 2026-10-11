@@ -1,0 +1,15 @@
+{
+  "name": "sarthak-ai-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^3.13.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "groq-sdk": "^1.6.0"
+  }
+}
